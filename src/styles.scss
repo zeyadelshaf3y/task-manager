@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+// bootstrap
+@import "~bootstrap/scss/bootstrap.scss";
+@import "assets/variables";
+// Quiksand  google font-black
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: $background-color;
+  overflow-x: hidden;
+}
+
+
+header {
+  &.header {
+    height: 32vh;
+    background-color: $main-color;
+  }
+}
+
+.content {
+  .wrapper {
+    transform: translateY(-18vh);
+  }
+}
+
+.t-card {
+  background-color: $card-color;
+  border-radius: 11px;
+  box-shadow: 0 2px 8px rgba(black, 0.1);
+  overflow: hidden;
+}
