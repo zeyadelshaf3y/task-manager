@@ -4,6 +4,7 @@ import {BoardData, List, UserData} from '../../model/model';
 import {NgForm} from '@angular/forms';
 import {CookieService} from 'ngx-cookie-service';
 import {BoardService} from '../../services/board.service';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 declare const $: any;
 
@@ -136,14 +137,14 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   clearList(listName: string) {
-    if(listName === 'todo') {
+    if (listName === 'todo') {
       this.boardData.todo = [];
     } else if (listName === 'progress') {
       this.boardData.inProgress = [];
-    } else if (listName === 'review'){
+    } else if (listName === 'review') {
       this.boardData.review = [];
     } else {
-      this.boardData.completed =[];
+      this.boardData.completed = [];
     }
     this.saveBoardData();
     this.getBoardData();
@@ -607,5 +608,18 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.saveBoardData();
   }
 
+  // ******** Drag and Drop ******** //
+  drop(event: CdkDragDrop<List[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.saveBoardData();
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+      this.saveBoardData();
+    }
+  }
 
 }

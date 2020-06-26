@@ -50,7 +50,7 @@
         </button>
       </div>
       <div class="overflow-x-scroll">
-        <div class="row flex-nowrap board">
+        <div class="row flex-nowrap board" cdkDropListGroup>
 
           <!--          Todo list-->
           <div class="col-lg-3 col-md-4 col-sm-6 col-10 px-1">
@@ -71,11 +71,11 @@
                 </div>
 
                 <!--                list items-->
-                <div class="list-items" #todo_list>
+                <div class="list-items" #todo_list cdkDropList [cdkDropListData]="boardData.todo" (cdkDropListDropped)="drop($event)">
 
                   <!--                  Item-->
-                  <div class="list-item p-3 mb-2" *ngFor="let todoItem of boardData?.todo; trackBy: trackByFn"
-                       (click)="fillContainer(todoItem); todoModalOpen = !todoModalOpen">
+                  <div class="list-item p-3 mb-2 example-custom-placeholder" *ngFor="let todoItem of boardData?.todo; trackBy: trackByFn"
+                       (click)="fillContainer(todoItem); todoModalOpen = !todoModalOpen" cdkDrag>
                     <!--                    <label class="mb-0" style="width: 50px; height: 10px; background-color: #55C986;border-radius: 4px"></label>-->
                     <div class="item-title">
                       <h6 class="title ">{{todoItem?.title}}</h6>
@@ -140,12 +140,12 @@
                 </div>
 
                 <!--                list items-->
-                <div class="list-items" #progress_list>
+                <div class="list-items" #progress_list cdkDropList [cdkDropListData]="boardData.inProgress" (cdkDropListDropped)="drop($event)">
 
                   <!--                  Item-->
                   <div class="list-item p-3 mb-2"
                        (click)="fillContainer(progressItem); progressModalOpen = !progressModalOpen"
-                       *ngFor="let progressItem of boardData?.inProgress; trackBy: trackByFn">
+                       *ngFor="let progressItem of boardData?.inProgress; trackBy: trackByFn" cdkDrag>
                     <div class="item-title">
                       <h6 class="title">{{progressItem?.title}}</h6>
                     </div>
@@ -206,11 +206,11 @@
                 </div>
 
                 <!--                list items-->
-                <div class="list-items" #review_list>
+                <div class="list-items" #review_list cdkDropList [cdkDropListData]="boardData.review" (cdkDropListDropped)="drop($event)">
 
                   <!--                  Item-->
                   <div class="list-item p-3 mb-2" *ngFor="let reviewItem of boardData?.review"
-                       (click)="fillContainer(reviewItem); reviewModalOpen = !reviewModalOpen">
+                       (click)="fillContainer(reviewItem); reviewModalOpen = !reviewModalOpen" cdkDrag>
                     <div class="item-title">
                       <h6 class="title">{{reviewItem?.title}}</h6>
                     </div>
@@ -256,7 +256,7 @@
           <div class="col-lg-3 col-md-4 col-sm-6 col-10 px-1">
             <div class="t-card">
 
-              <div class="completed p-3">
+              <div class="completed p-3" >
                 <!--                list title -->
                 <div class="list-title d-flex align-items-center justify-content-between mb-3">
                   <h5 class="font-weight-bold heading">Completed</h5>
@@ -271,11 +271,11 @@
                 </div>
 
                 <!--                list items-->
-                <div class="list-items" #completed_list>
+                <div class="list-items" #completed_list cdkDropList [cdkDropListData]="boardData.completed" (cdkDropListDropped)="drop($event)">
 
                   <!--                  Item-->
                   <div class="list-item p-3 mb-2" *ngFor="let completedItem of boardData?.completed"
-                       (click)="fillContainer(completedItem); completedModalOpen = !completedModalOpen">
+                       (click)="fillContainer(completedItem); completedModalOpen = !completedModalOpen" cdkDrag>
                     <div class="item-title">
                       <h6 class="title">{{completedItem?.title}}</h6>
                     </div>

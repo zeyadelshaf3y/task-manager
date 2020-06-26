@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand', sans-serif !important;
   background-color: $background-color;
   overflow-x: hidden;
 }
@@ -30,3 +30,6 @@ header {
   box-shadow: 0 2px 8px rgba(black, 0.1);
   overflow: hidden;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
